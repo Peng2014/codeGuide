@@ -1,9 +1,41 @@
-# Summary
+# 前端开发实践总结
 
 This is the summary of my book.
 
-* [section 1](section1/README.md)
-    * [example 1](section1/example1.md)
-    * [example 2](section1/example2.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
+* [开发规范](开发规范/README.md)
+
+* [开发流程](开发流程/README.md)
+
+* [开发工具](开发工具/README.md)
+
+* [模块化](模块化/README.md)
+
+* [组件化](组件化/README.md)
+
+* [组件库](组件库/README.md)
+
+* [性能优化](性能优化/README.md)
+
+    * [浏览器预处理](性能优化/浏览器预处理.md)
+
+    * [减少DNS查询](性能优化/减少DNS查询.md)
+
+    * [建立连接](性能优化/建立连接.md)
+
+    * [发送请求](性能优化/发送请求.md)
+
+    * [等待响应](性能优化/等待响应.md)
+
+    * [接收数据](性能优化/接收数据.md)
+
+    * [处理元素](性能优化/处理元素.md)
+
+    * [渲染元素](性能优化/渲染元素.md)
+
+    * [交互操作](性能优化/交互操作.md)
+
+    * [其它方面](性能优化/其它方面.md)
+
+
+* [项目部署](项目部署/README.md)
+
