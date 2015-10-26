@@ -13,9 +13,13 @@
 ## 缩进
 <a id="indent"></a>
 
-使用soft tab（4个空格）。
+* 使用soft tab（4个空格）。
 
-子级DOM结构可整体缩进提高可读性。
+* 子级DOM结构可整体缩进提高可读性。
+
+* 同个属性不同前缀的写法需要在`垂直方向保持对齐`，具体参照下边的写法；
+
+* `无前缀`的标准属性应该写在有前缀的属性`后面`；
 
 ```css
     .element {
@@ -29,6 +33,36 @@
         width: 50px;
         height: 50px;
         }
+    
+     /* not good */
+    .element {
+        height:0px;
+        width: 50.0px;
+        color: rgba(0, 0, 0, 0.5);
+        
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+    
+        background: linear-gradient(to bottom, #fff 0, #eee 100%);
+        background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+        background: -moz-linear-gradient(top, #fff 0, #eee 100%);
+    }
+    
+    /* good */
+    .element {
+        height:0;
+        width: 50px;
+        color: rgba(0, 0, 0, .5);
+        
+        -webkit-border-radius: 3px;
+           -moz-border-radius: 3px;
+                border-radius: 3px;
+    
+        background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+        background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
+        background:         linear-gradient(to bottom, #fff 0, #eee 100%);
+    }
     
 ```
 
@@ -221,10 +255,6 @@ margin 和 padding 相反，需要使用简写；
 
 * 属性值'0'后面不要加`单位`；
 
-* 同个属性不同前缀的写法需要在`垂直方向保持对齐`，具体参照下边的写法；
-
-* `无前缀`的标准属性应该写在有前缀的属性`后面`；
-
 * 不要在同个规则里出现重复的属性，如果重复的属性是连续的则没关系；
 
 * 不要在一个文件里出现两个相同的规则；
@@ -236,35 +266,3 @@ margin 和 padding 相反，需要使用简写；
 * 发布的代码中不要有 @import；
 
 * 尽量少用'*'选择器。
-
-```css
-    /* not good */
-    .element {
-        height:0px;
-        width: 50.0px;
-        color: rgba(0, 0, 0, 0.5);
-        
-        border-radius: 3px;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-    
-        background: linear-gradient(to bottom, #fff 0, #eee 100%);
-        background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
-        background: -moz-linear-gradient(top, #fff 0, #eee 100%);
-    }
-    
-    /* good */
-    .element {
-        height:0;
-        width: 50px;
-        color: rgba(0, 0, 0, .5);
-        
-        -webkit-border-radius: 3px;
-           -moz-border-radius: 3px;
-                border-radius: 3px;
-    
-        background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
-        background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
-        background:         linear-gradient(to bottom, #fff 0, #eee 100%);
-    }
-```
