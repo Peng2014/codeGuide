@@ -30,11 +30,13 @@
     * 链接相关信息: `src`,`href`,`for`
     * 信息补充说明: `value`,`title`,`alt`,`placeholder`
     * 限制样式相关: `max-length`,`max`,`min`,`pattern`,`disabled`
+    
 ``` HTML
     `<a class="..." id="..." data-modal="toggle" href="#">Example link</a>`
 ```
 
 5. boolean属性存在就为ture,不需要申明取值
+
 ``` HTML
     <input type="text" disabled>
     <input type="checkbox" value="1" checked>
