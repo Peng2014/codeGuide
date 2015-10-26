@@ -188,3 +188,8 @@
     .block-modifier {}
     .block-element-modifier {}
 ```
+模块的扩展和继承
+
+* 基础模块：nav
+* 扩展模块：nav nav-inline，扩展模块继承了基础模块所有的特性并加上自己的一些新特性
+* 私有模块：nav nav-inline menu-nav，私有模块-基础模块名
