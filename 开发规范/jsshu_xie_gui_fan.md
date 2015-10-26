@@ -235,8 +235,32 @@
         
 ```
 
+## 注释
+
+### 单行注释
+双斜线后，必须跟一个空格；
+
+缩进与下一行代码保持一致；
+
+可位于一个代码行的末尾，与代码间隔一个空格。
 
 
+### 多行注释
+最少三行, '*'后跟一个空格，具体参照下边的写法；
 
+建议在以下情况下使用：
 
+难于理解的代码段
+* 可能存在错误的代码段
+* 浏览器特殊的HACK代码
+* 业务逻辑强相关的代码
+
+```javascript
+if (condition) {
+    // if you made it here, then all security checks passed
+    allowed();
+}
+
+var zhangsan = 'zhangsan'; // one space after code
+```
 
