@@ -445,20 +445,11 @@ if, else, for, while, do, switch, try, catch, finally, with。
 
 ```javascript
     // not good
-    var a = {
-        'b': 1
-    };
-    
-    var a = {b: 1};
-    
-    var a = {
-        b: 1,
-        c: 2,
-    };
+    if (condition)
+        doSomething();
     
     // good
-    var a = {
-        b: 1,
-        c: 2
-    };
+    if (condition) {
+        doSomething();
+    }
 ```
