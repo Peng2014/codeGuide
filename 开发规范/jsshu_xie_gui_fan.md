@@ -255,12 +255,18 @@
 * 浏览器特殊的HACK代码
 * 业务逻辑强相关的代码
 
-```javascript
-if (condition) {
-    // if you made it here, then all security checks passed
-    allowed();
-}
-
-var zhangsan = 'zhangsan'; // one space after code
+```JavaScript
+    if (condition) {
+        // if you made it here, then all security checks passed
+        allowed();
+    }
+    
+    var zhangsan = 'zhangsan'; // one space after code
+    
+    
+    /*
+     * one space after '*'
+     */
+    var x = 1;
 ```
 
