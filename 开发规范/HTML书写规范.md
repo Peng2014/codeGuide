@@ -31,33 +31,32 @@
     * 信息补充说明: `value`,`title`,`alt`,`placeholder`
     * 限制样式相关: `max-length`,`max`,`min`,`pattern`,`disabled`
     
-``` HTML
-    `<a class="..." id="..." data-modal="toggle" href="#">Example link</a>`
-```
-
+    ``` HTML
+        `<a class="..." id="..." data-modal="toggle" href="#">Example link</a>`
+    ```
+    
 5. boolean属性存在就为ture,不需要申明取值
 
-``` HTML
-    <input type="text" disabled>
-    <input type="checkbox" value="1" checked>
-    <select>
-        <option value="1" selected>1</option>
-    </select>
-```
+    ``` HTML
+        <input type="text" disabled>
+        <input type="checkbox" value="1" checked>
+        <select>
+            <option value="1" selected>1</option>
+        </select>
+    ```
+    
+6. 习惯性书写注释，方便日后维护, 模块结构如下
 
+7. 空标签要在标签内用注释的方式注明用途
 
-4. 习惯性书写注释，方便日后维护, 模块结构如下
-
-5. 空标签要在标签内用注释的方式注明用途
-
-``` HTML
-    <!-- 注释写于dom结点外部，空标签要在标签内用注释的方式注明用途 -->
-    <div class="ui-yyy">
-        <div class="ui-yyy-hd"><span class="icon"><!--icon --></span></div>
-        <div class="ui-yyy-bd">模块主体</div>
-        <div class="ui-yyy-ft">模块底部</div>
-    </div>
-```
+    ``` HTML
+        <!-- 注释写于dom结点外部，空标签要在标签内用注释的方式注明用途 -->
+        <div class="ui-yyy">
+            <div class="ui-yyy-hd"><span class="icon"><!--icon --></span></div>
+            <div class="ui-yyy-bd">模块主体</div>
+            <div class="ui-yyy-ft">模块底部</div>
+        </div>
+    ```
 
 
 #### HTML文档头部
