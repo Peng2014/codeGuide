@@ -509,3 +509,59 @@ undefined
         ...
     }
 ```
+
+## 杂项
+
+* 不要混用tab和space；
+
+* 不要在一处使用多个tab或space；
+
+* 换行符统一用'LF'；
+
+* 对上下文this的引用只能使用'_this', 'that', 'self'其中一个来命名；
+
+* 行尾不要有空白字符；
+
+* switch的falling through和no default的情况一定要有注释特别说明；
+
+* 不允许有空的代码块。
+
+```javascript
+    // not good
+    var a   = 1;
+    
+    function Person() {
+        // not good
+        var me = this;
+    
+        // good
+        var _this = this;
+    
+        // good
+        var that = this;
+    
+        // good
+        var self = this;
+    }
+    
+    // good
+    switch (condition) {
+        case 1:
+        case 2:
+            ...
+            break;
+        case 3:
+            ...
+        // why fall through
+        case 4
+            ...
+            break;
+        // why no default
+    }
+    
+    // not good with empty block
+    if (condition) {
+    
+    }
+    
+```
