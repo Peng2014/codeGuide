@@ -163,9 +163,76 @@
     };
 ```
 
+## 换行
+
+换行的地方，行末必须有','或者运算符；
+
+以下几种情况不需要换行：
+
+* 下列关键字后：else, catch, finally
+* 代码块'{'前
+
+以下几种情况需要换行：
+
+* 代码块'{'后和'}'前
+* 变量赋值后
 
 
-
+```javascript
+    // not good
+    var a = {
+        b: 1
+        , c: 2
+    };
+    
+    x = y
+        ? 1 : 2;
+    
+    // good
+    var a = {
+        b: 1,
+        c: 2
+    };
+    
+    x = y ? 1 : 2;
+    x = y ?
+        1 : 2;
+    
+    // no need line break with 'else', 'catch', 'finally'
+    if (condition) {
+        ...
+    } else {
+        ...
+    }
+    
+    try {
+        ...
+    } catch (e) {
+        ...
+    } finally {
+        ...
+    }
+    
+    // not good
+    function test()
+    {
+        ...
+    }
+    
+    // good
+    function test() {
+        ...
+    }
+    
+    // not good
+    var a, foo = 7, b,
+        c, bar = 8;
+    
+    // good
+    var a,
+        foo = 7,
+        b, c, bar = 8;
+```
 
 
 
