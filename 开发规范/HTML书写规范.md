@@ -162,6 +162,29 @@
 
 尽量做到`“三无原则”`
 
-* NO ID! 
-* NO 辈分层级！ 
-* NO 标签!
+* NO ID 
+* NO 辈分层级
+* NO 标签
+
+```html
+    <!-- Good -->
+    <ul class="nav">
+        <li class="nav-item">
+            <a href="#">Tab1</a>
+        </li>
+        <li class="nav-item">
+            <a href="#">Tab2</a>
+        </li>
+        <li class="nav-item nav-item-active">
+            <a href="#">Tab3</a>
+        </li>
+        <li class="nav-item">
+            <a href="#">Tab4</a>
+        </li>
+    <ul>
+    
+    .block {}
+    .block-element {}
+    .block-modifier {}
+    .block-element-modifier {}
+```
