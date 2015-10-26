@@ -31,3 +31,53 @@
         }
     
 ```
+
+## 空格
+
+以下几种情况不需要空格：
+
+* 属性名后
+* 多个规则的分隔符','前
+* !important '!'后
+* 属性值中'('后和')'前
+* 行末不要有多余的空格
+
+以下几种情况需要空格：
+
+* 属性值前
+* 选择器'>', '+', '~'前后
+* '{'前
+* !important '!'前
+* 属性值中的','后
+* 注释'/\*'后和'\*/'前
+
+``` CSS
+    /* not good */
+    .element {
+        color :red! important;
+        background-color: rgba(0,0,0,.5);
+    }
+    
+    /* not good */
+    .element ,
+    .dialog{
+        color :red! important;
+        background-color: rgba(0,0,0,.5);
+    }
+    
+    /* not good */
+    .element>.dialog{
+        ...
+    }
+    
+    
+    /* not good */
+    .element{
+        ...
+    }
+    
+    /* good */
+    .element {
+        ...
+    }
+```
