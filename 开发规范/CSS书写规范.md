@@ -17,7 +17,7 @@
 
 子级DOM结构可整体缩进提高可读性。
 
-``` CSS
+```css
     .element {
     position: absolute;
     top: 10px;
@@ -57,7 +57,7 @@
 * 每个属性独占一行
 * 多个规则的分隔符','后
 
-``` CSS
+```css
     /* not good */
     .element>.dialog ,
     .dialog{
@@ -82,7 +82,7 @@
 * '}'后最好跟一个空行，包括scss中嵌套的规则
 * 属性之间需要适当的空行，具体见属性声明顺序
 
-``` less
+```less
     /* not good */
     .element {
         border-radius: 10px;
@@ -116,7 +116,8 @@
 
 * 可位于一个代码行的`末尾`，与代码间隔一个`空格`。
 
-``` css
+
+```css
     /* Modal header */
     .modal-header {
         color:black;
@@ -152,6 +153,34 @@
     }
     
     li[data-type="single"] {
-        ...
+        color:red;
+    }
+```
+
+##属性简写
+
+属性简写需要你非常清楚属性值的正确顺序，而且在大多数情况下并不需要设置属性简写中包含的所有值，所以建议尽量分开声明会更加清晰；
+
+margin 和 padding 相反，需要使用简写；
+
+常见的属性简写包括：
+
+* font
+* background
+* transition
+* animation
+
+```css
+    /* not good */
+    .element {
+        transition: opacity 1s linear 2s;
+    }
+    
+    /* good */
+    .element {
+        transition-delay: 2s;
+        transition-timing-function: linear;
+        transition-duration: 1s;
+        transition-property: opacity;
     }
 ```
