@@ -58,7 +58,7 @@
 * 多个规则的分隔符','后
 
 ``` CSS
-    
+    /* not good */
     .element>.dialog ,
     .dialog{
         color :red! important;
