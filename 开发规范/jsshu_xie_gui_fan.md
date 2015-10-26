@@ -490,3 +490,22 @@ if, else, for, while, do, switch, try, catch, finally, with。
         ...
     }
 ```
+
+undefined
+
+永远不要直接使用undefined进行变量判断；
+
+使用typeof和字符串'undefined'对变量进行判断。
+
+
+```javascript
+    // not good
+    if (person === undefined) {
+        ...
+    }
+    
+    // good
+    if (typeof person === 'undefined') {
+        ...
+    }
+```
