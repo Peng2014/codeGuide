@@ -136,3 +136,22 @@
         color: red; /* color red */
     }
 ```
+
+## 引号
+
+* 最外层统一使用双引号；
+
+* url的内容要用引号；
+
+* 属性选择器中的属性值需要引号。
+
+```css
+    .element:after {
+        content: "";
+        background-image: url("logo.png");
+    }
+    
+    li[data-type="single"] {
+        ...
+    }
+```
