@@ -4,15 +4,28 @@
 
 # CSS 书写规范
 
-* [基本语法](#note)
-* [HTML文档头部](#head)
-
-* [简洁的标签结构](#dom)
+* [缩进](#indent)
 
 
 
 
-## 基本语法
-<a id="note"></a>
 
-## 无法百分百确定不会嵌套同样标签的情况下不用标签选择器
+## 缩进
+<a id="indent"></a>
+
+使用soft tab（4个空格）。
+
+子级DOM结构可整体缩进提高可读性。
+
+``` CSS
+    .element {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    }
+    
+```
