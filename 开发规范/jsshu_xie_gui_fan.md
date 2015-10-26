@@ -442,13 +442,23 @@
 下列关键字后必须有大括号（即使代码块的内容只有一行）：
 
 if, else, for, while, do, switch, try, catch, finally, with。
+
 ```javascript
     // not good
-    if (condition)
-        doSomething();
+    var a = {
+        'b': 1
+    };
+    
+    var a = {b: 1};
+    
+    var a = {
+        b: 1,
+        c: 2,
+    };
     
     // good
-    if (condition) {
-        doSomething();
-    }
+    var a = {
+        b: 1,
+        c: 2
+    };
 ```
