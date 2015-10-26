@@ -4,7 +4,7 @@
 * [开发规范](开发规范/README.md)
    * [HTML书写规范](开发规范/HTML书写规范.md)
    * [CSS书写规范](开发规范/CSS书写规范.md)
-   * JS书写规范
+   * [JS书写规范](开发规范/jsshu_xie_gui_fan.md)
 * [开发流程](开发流程/README.md)
 * [开发工具](开发工具/README.md)
 * [模块化](模块化/README.md)
