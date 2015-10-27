@@ -622,16 +622,13 @@ undefined
     var name[空格]=[空格]value;
     if[空格](a,[空格]b) {
     }
+
+    var fn = function () {
+    };//这里没有分号的话，脚本解析器会报错！！！
+    (function () {
+       alert(1);
+    })();
 ```
-
-    句末必须用分号结尾
-
-var fn = function () {
-};//这里没有分号的话，脚本解析器会报错！！！
-(function () {
-   alert(1);
-})();
-
 
 单行过长应在适当位置予以换行,增强可读性
 
@@ -652,27 +649,29 @@ if、while、for、do语句的执行体总是用"{"和"}"括起来，即使在�
 
 语法意义相互独立的代码将用空行分隔
 
+```javasript
     a++; b++; //避免同一行书写两个表达式if (a > b) {
     value = a;  //行间不用空行间隔
-}
+    }
 
 var variableName = value;   //与上一代码行使用空行间隔
+```
 
 ##注释规范
 
 ###文件注释
 
 文件注释要标明作者、文件版本、创建/修改时间、重大版本修改记录
-
+```javascript
 /**
  * @file Image.js
  * @description 功能详细描述
  */
-
+```
 函数描述
 
 函数或者类等都要添加头描述
-
+```javascript
 /**
  * 简述
  *
@@ -684,22 +683,22 @@ var variableName = value;   //与上一代码行使用空行间隔
  */
  function fooFunction (arg1, arg2) {
  }
-
+```
 
 操作注释
 
 单行注释,写在代码上面
 
 多行注释
-
+```javascript
 /*
 * 注释操作说明
 */for( var i = 0; i < obj.lenght; i++) {
 }
-
+```
 
 注释标签参考
-
+```javascript
     @addon把一个函数标记为另一个函数的扩张，另一个函数的定义不在源文件中。
     @argument用大括号中的自变量类型描述一个自变量。
     @author函数/类作者的姓名。
@@ -713,93 +712,100 @@ var variableName = value;   //与上一代码行使用空行间隔
     @return描述一个函数的返回值。
     @type指定函数/成员的返回类型。
     @version函数/类的版本号。
-
+```
 jQuery代码规范与最佳实践
 
 
 1 所有使用或缓存jQuery对象的变量应该以 $ 开头
 
 2 始终将jQuery选择器返回的对象缓存到本地变量中以复用。
-
+```javascript
   var $myDiv = $("#myDiv");
   $myDiv.click(function(){....});
-
+```
 
 选择器
 
 1 ID选择器可用时就使用ID选择。
 
 2 当使用类/伪类选择器时，总是给选择器附上元素类型来避免扫描整个DOM树。
+```javascript
+// BAD 在整个DOM树中扫描"products"类名
+var $products = $(".products");
 
-// BAD 在整个DOM树中扫描"products"类名var $products = $(".products");
-
-// GOOD 只在DIV元素中扫描"products"类名var $products = $("div.products");
-
+// GOOD 只在DIV元素中扫描"products"类名
+var $products = $("div.products");
+```
 
 3 在ID > 子节点层级选择器中使用 find() 方法。
-
+```javascript
     // BAD, Sizzle选择器引擎查找层级
     var $productIds = $("#products div.id");
 
     // GOOD, 只有div.id走Sizzle选择器引擎
     var $productIds = $("#products").find("div.id");
-
+```
 
 4 选择器后半部分比前半部分明确。
-
+```javascript
     // 未优化
     $("div.data .gonzalez");
 
     // 优化
     $(".data td.gonzalez");
-
+```
 
 5 避免冗余选择器。
-
+```javascript
     $(".data table.attendees td.gonzalez");
 
     // Better: 有必要时要去掉中间不必要的内容
     $(".data td.gonzalez");
-
+```
 
 6 给选择器添加上下文。
-
+```javascript
 // 要扫描整个DOM树寻找
 $('.class');
 
 // 只在#class-container里扫描
 $('.class', '#class-container');
-
+```
 
 7 避免使用通配符选择器。
-
-$('div.container > *'); // BAD
-$('div.container').children(); // BETTER
-
+```javacript
+// BAD
+$('div.container > *'); 
+// BETTER
+$('div.container').children(); 
+```
 8 避免使用隐式通配选择器。当省略下面的input时，会隐式的使用通配符选择器。
-
+```javascript
 $('div.someclass :radio'); // BAD
 $('div.someclass input:radio'); // GOOD
-
+```
 9 ID选择器使用的是 document.getElementById() ，ID选择器无需嵌套ID。
-
+```javascript
 $('#outer #inner'); // BAD
 $('div#inner'); // BAD
 $('.outer-container #inner'); // BAD
-$('#inner'); // GOOD
 
+$('#inner'); // GOOD
+```
 事件
 
 1 每个页面只使用一个Document Ready函数。利于调试。
 
 2 不要使用匿名函数绑定事件。匿名函数不利于调试、维护、测试和复用。
+```javascript
+// BAD
+$("#myLink").on("click", function(){...}); 
 
-$("#myLink").on("click", function(){...}); // BAD
-
-// GOODfunction myLinkClickHandler(){...}
+// GOOD
+function myLinkClickHandler(){...}
 
 $("#myLink").on("click", myLinkClickHandler);
-
+```
 3 Document ready函数不应该是匿名函数。匿名函数不能复用也无法对其测试。
 
 $(function(){ .. }); // BAD: 不容易复用也不利于测试
