@@ -2,13 +2,9 @@
 
 This is a book powered by [GitBook](https://github.com/GitbookIO/gitbook).
 
-## 性能优化
 
-> 根据浏览器请求和响应的过程进行梳理总结
 
------
-
-前端工程化
+#前端工程化
 
 
 ## 开发规范
