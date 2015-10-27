@@ -803,7 +803,6 @@ $("#myLink").on("click", function(){...});
 
 // GOOD
 function myLinkClickHandler(){...}
-
 $("#myLink").on("click", myLinkClickHandler);
 ```
 3 Document ready函数不应该是匿名函数。匿名函数不能复用也无法对其测试。
