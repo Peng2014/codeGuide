@@ -564,6 +564,7 @@ undefined
     
     }
     
+<<<<<<< HEAD
 ```
 
 ## 命名规范
@@ -858,3 +859,4 @@ $myList.attr({
 2 不要把CSS混进jQuery
 
 $("#mydiv").css({'color':red, 'font-weight':'bold'}); // BAD
+

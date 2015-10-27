@@ -610,6 +610,7 @@ margin 和 padding 相反，需要使用简写；
         "pointer-events"
     ]
 ]
+<<<<<<< HEAD
 ```
 
 ## 雪碧图sprite
@@ -655,4 +656,5 @@ margin 和 padding 相反，需要使用简写；
 十位级（普通区块：10、22、1Z、YZ）
 
 个位级（业务级：1-9，Z）
+
 
