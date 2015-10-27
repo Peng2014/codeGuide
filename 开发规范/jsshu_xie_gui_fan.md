@@ -806,56 +806,62 @@ function myLinkClickHandler(){...}
 $("#myLink").on("click", myLinkClickHandler);
 ```
 3 Document ready函数不应该是匿名函数。匿名函数不能复用也无法对其测试。
-
+```javascript
 $(function(){ .. }); // BAD: 不容易复用也不利于测试
 
 // GOOD
-$(initPage); // or $(document).ready(initPage);function initPage(){
+$(initPage); 
+// or 
+$(document).ready(initPage);
+function initPage(){
 // Document ready里可以初始化变量和调用其他初始化函数
 }
-
+```
 
 4 不要在HTML文件里（行内JS）
 
 5 如有需要，对事件使用自定义命名空间，这有利于去解绑某DOM元素上特定的事件而不会影响到该DOM元素上的其他事件。
-
+```javascript
 $("#myLink").on("click.mySpecialClick", myEventHandler); // GOOD// 后面会很容易的解绑这个特定的点击事件
 $("#myLink").unbind("click.mySpecialClick");
-
+```
 
 Ajax
 
-1 避免使用 .getJSON() 和 .get() ，只使用 $.ajax() ，前两者都是在内部使用的后者。
+1 避免使用 .getJSON() 和 .get() ，只使用 `$.ajax()` ，前两者都是在内部使用的后者。
 
 2 明确设置数据的类型 dataType ，这样很容易知道当前正在处理什么样的数据。
 
 链式写法
 
 1 尽量使用链式写法而不是用变量缓存或者多次调用选择器方法。
-
+```javascript
 $("#myDiv").addClass("error").show();
-
+```
 2 当链式写法超过三次或者因为事件绑定变得复杂后，使用换行和缩进保持代码可读性。
-
+```javascript
     $("#myLink")
     .addClass("bold")
     .on("click", myClickHandler)
     .on("mouseover", myMouseOverHandler)
     .show();
-
+```
 3 对于更长的链式调用，可接受用变量缓存一个中间对象。
 其他原则
 
 1 参数尽量使用对象字面量
+```javascript
+// BAD
+$myLink.attr("href", "#").attr("title", "my link").attr("rel", "external"); 
 
-$myLink.attr("href", "#").attr("title", "my link").attr("rel", "external"); // BAD// GOOD
+// GOOD
 $myList.attr({
     href: "#",
     title: "my link",
     rel: "external"
 });
-
+```
 2 不要把CSS混进jQuery
-
+```javascript
 $("#mydiv").css({'color':red, 'font-weight':'bold'}); // BAD
-
+```
