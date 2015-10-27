@@ -1,4 +1,23 @@
+<a id="top"></a>
+
+ <a href="#top" target="_self" style="position:fixed;bottom:60px;right:100px;z-index:10;display:block;text-decoration=none;background:#999;color:#fff;width:30px;height:30px;border-radius:5px;line-height:30px;text-align:center">top</a>
+
 # 需求分析
+
+* [重要思想规范](#main)
+* [文件和目录命名规范](#host)
+
+
+
+#### 重要思想规范
+<a id="main"></a>
+
+1. 保持代码易于维护
+2. 保持代码清晰易懂
+3. 保持代码可拓展性
+
+
+
 
 首先整个产品设计分为5个大的方面，由低到高，底层根本原因决定上层形态构成。和网站分层也很形象。
 
