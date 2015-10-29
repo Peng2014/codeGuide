@@ -4,63 +4,91 @@
 
 # HTML书写规范
 
-* [基本语法](#note)
-* [HTML文档头部](#head)
 
-* [简洁的标签结构](#dom)
+## 样式结构行为分离
 
+* 不要用行内样式或脚本;
+* 不要用在元素上使用`style`属性;
+* 不使用表象元素:`<b>,<u>,<center>,<font>`;
+* 不使用表象class名:`red`,`center`,`left`,`right`;
+* HTML结构内容至上,装饰性图片或图标等都可尽量通过`:before`或`:after`添加;
+* 对于内容为全部大写字母的情况，请通过CSS`text-transform:uppercase`设定;
 
+## 标记结构良好
 
+* 段落分隔符要使用实际对应的`<p>`元素，而不是用多个`<br>`标签;
+* 列表中的条目`<li>`必须总是放置于`<ul>`、`<ol>`或`<dl>` 中;
+* 推荐使用 `button` 代替 input，但必须声明 `type`,不过必须明确效果图上是否为按钮，还是只是一个样式为按钮的a链接;
+* 表单元素的 name 不能设定为 action, enctype, method, novalidate, target, submit 会导致表单提交混乱;
+* 表单元素,必须为含有描述性表单元素(input, textarea)添加label;
 
-## 基本语法
-<a id="note"></a>
+    ```html
+        <!-- bad -->
+        <p>姓 名: <input type="text" id="name" name="name" /></p>
 
-## 标签属性
-
-1. 对于`属性`的定义，确保全部使用`"双引号"`，绝不要使用单引号；
-
-2. 属性名全小写，用中划线做分隔符,例如 `rel="apple-touch-icon"`;
-
-3. 不要省略可选的结束标签，如：`</li>`,`</body>`；
-
-4. 属性最好能够按照特定的顺序出现以保证易读性；
-    * 高复用性: `class`
-    * 唯一性id,(少用): `id`
-    * 属性类型角色: `name`，`data-*`，`type`
-    * 链接相关信息: `src`,`href`,`for`
-    * 信息补充说明: `value`,`title`,`alt`,`placeholder`
-    * 限制样式相关: `max-length`,`max`,`min`,`pattern`,`disabled`
-    
-    ``` HTML
-        `<a class="..." id="..." data-modal="toggle" href="#">Example link</a>`
+        <!-- good -->
+        <!-- 如:text、select、textarea 使用 for id 形式, radio、checkbox 用 for 包含的形式 -->
+        <p><label for="name">姓 名: </label><input type="text" id="name" /></p>
     ```
-    
-5. boolean属性存在就为ture,不需要申明取值
+* 不必为disabled, checked, selected 等 Boolean 属性添加属性值。
 
-    ``` HTML
-        <input type="text" disabled>
-        <input type="checkbox" value="1" checked>
-        <select>
-            <option value="1" selected>1</option>
-        </select>
+    ```html
+    <!-- bad -->
+    <input type="text" disabled="disabled"/>
+    <!-- good -->
+    <input type="text" disabled/>
+
     ```
-    
-6. 习惯性书写注释，方便日后维护, 模块结构如下
+* 重要图片必须加上alt属性,视频，canvas动画等也要确保有替代的接入接口;
+* 给重要的元素和截断的元素加上title;
 
-7. 空标签要在标签内用注释的方式注明用途
-
-    ``` HTML
-        <!-- 注释写于dom结点外部，空标签要在标签内用注释的方式注明用途 -->
-        <div class="ui-yyy">
-            <div class="ui-yyy-hd"><span class="icon"><!--icon --></span></div>
-            <div class="ui-yyy-bd">模块主体</div>
-            <div class="ui-yyy-ft">模块底部</div>
-        </div>
+    ```html
+        <!-- bad  -->
+        <span class="text-box">
+          <span class="square"></span>
+          See the square next to me?
+        </span>
+        
+        .text-box > .square {
+          display: inline-block;
+          width: 1rem;
+          height: 1rem;
+          background-color: red;
+        }
+        
+        <!-- good -->
+        <span class="text-box">
+          See the square next to me?
+        </span>
+        
+        .text-box:before {
+          content: "";
+          display: inline-block;
+          width: 1rem;
+          height: 1rem;
+          background-color: red;
+        }
     ```
+
+## 书写链接地址时, 必须避免重定向
+
+
+
 
 
 ## HTML文档头部
-<a id="head"></a>
+
+* 注意文档类型：`<!DOCTYPE html>`
+
+* html标签属性：`lang="zh-Hans"`
+
+* `title` 每个页面必须有且仅有一个 title 元素;
+
+* `base` 可用场景：首页、频道等大部分链接都为新窗口打开的页面;
+
+* 不要使用古老的 <!– //–> 这种`hack脚本`, 它用于阻止第一代浏览器（Netscape 1和Mosaic）将脚本显示成文字;
+
+* noscript 在用户代理不支持 JavaScript 的情况下提供说明;
 
 ``` html
     <!DOCTYPE HTML>
@@ -123,11 +151,64 @@
 
 
 
+## 标签属性
+
+* 对于`属性`的定义，确保全部使用`"双引号"`，绝不要使用单引号；
+
+* 属性名全小写，用中划线做分隔符,例如 `rel="apple-touch-icon"`;
+
+* 省略style,script的type属性;
+
+* 不要省略可选的结束标签,如：`</li>`,`</body>`;
+
+* 属性最好能够按照特定的顺序出现以保证易读性;
+
+    * 高复用性: `class`
+    * 唯一性id,(少用): `id`
+    * 属性类型角色: `name`，`data-*`，`type`
+    * 链接相关信息: `src`,`href`,`for`
+    * 信息补充说明: `value`,`title`,`alt`,`placeholder`
+    * 限制样式相关: `max-length`,`max`,`min`,`pattern`,`disabled`
+    
+    ``` HTML
+        `<a class="..." id="..." data-modal="toggle" href="#">Example link</a>`
+    ```
+    
+* boolean属性存在就为ture,不需要申明取值
+
+    ``` HTML
+        <input type="text" disabled>
+        <input type="checkbox" value="1" checked>
+        <select>
+            <option value="1" selected>1</option>
+        </select>
+    ```
+
+* 空标签要在标签内用注释的方式注明用途
+
+    ``` HTML
+        <!-- 注释写于dom结点外部，空标签要在标签内用注释的方式注明用途 -->
+        <div class="ui-yyy">
+            <div class="ui-yyy-hd"><span class="icon"><!--icon --></span></div>
+            <div class="ui-yyy-bd">模块主体</div>
+            <div class="ui-yyy-ft">模块底部</div>
+        </div>
+    ```
+
+* 省略样式表与脚本上的type属性。
+    
+    ```html
+        <!-- good -->
+        <link rel="stylesheet" href="main.css">
+        <script src="main.js"></script>
+    ```
+    
+* 链接属性最后添加`/`,避免重定向:`href="http://task.zhubajie.com/"`, 即须在URL地址后面加上`“/”`;
+
 
 
 
 ## 简洁的标签结构
-<a id="dom"></a>
 
 在编写HTML代码时，需要尽量避免多余的父节点,很多时候，需要通过迭代和重构来使HTML变得更少。
 
@@ -142,17 +223,6 @@
 ```
 
 
-
-## JS生成标签
-
-在JS文件中生成标签让内容变得更难查找，更难编辑，性能更差。应该尽量避免这种情况的出现。
-
-
-## 实用高于完美
-
-尽量遵循HTML标准和语义，但是不应该以浪费实用性作为代价；
-
-任何时候都要用尽量小的复杂度和尽量少的标签来解决问题。
 
 ## HTML结构- 类命名
 
@@ -214,59 +284,26 @@ id 和 class 的选择，如果`只使用一次`，使用`id`,如果使用多次
 引入JS库文件, 文件名须包含库名称及`版本号`及是否为`压缩版`, 
 * 比如jquery-1.4.1.min.js; 
 * 引入插件, 文件名格式为库名称+插件名称, 比如jQuery.cookie.js;
-<<<<<<< HEAD
+* 脚本引用带上async属性`<script src="main.js" async></script>`
 
+## 在合适的条件下，利用 <thead>、<tbody>和<th>标签 (以及Scope属性）
 
-## 头部元素
-
-* `title` 每个页面必须有且仅有一个 title 元素;
-
-* `base` 可用场景：首页、频道等大部分链接都为新窗口打开的页面;
-
-* `link` link 用于引入 css 资源时，可省去 media(默认为all) 和 type(默认为text/css) 属性;
-
-* style type 默认为 text/css，可以省去;
-
-* `script` type 属性可以省去; 不赞成使用lang属性;
-
-* 不要使用古老的 <!– //–> 这种`hack脚本`, 它用于阻止第一代浏览器（Netscape 1和Mosaic）将脚本显示成文字;
-
-* noscript 在用户代理不支持 JavaScript 的情况下提供说明;
-
-
-## 表单元素
-
-## 必须为含有描述性表单元素(input, textarea)添加label,如:text、select、textarea 使用 for id 形式, radio、checkbox 用 for 包含的形式
-
-    ```html
-     <p>姓 名: <input type="text" id="name" name="name" /></p>
-    ```
-
-    ```html
-    <p><label for="name">姓 名: </label><input type="text" id="name" /></p>
-    ```
-
-* 推荐使用 `button` 代替 input，但必须声明 `type`;
-
-* 表单元素的 name 不能设定为 action, enctype, method, novalidate, target, submit 会导致表单提交混乱
-
-* 不必为disabled, checked, selected 等 Boolean 属性添加属性值。
-
-    ```html
-    <!-- 必须写为 -->
-    <input type="text" disabled/>
-    <!-- 不能写成 -->
-    <input type="text" disabled="disabled"/>
-    ```
-
-## 书写链接地址时, 必须避免重定向
-
-例如：`href="http://task.zhubajie.com/"`, 即须在URL地址后面加上`“/”`；
-
-## 图片`alt`属性，重要元素`titil`属性
-
-重要图片必须加上alt属性; 给重要的元素和截断的元素加上title
-
+```html
+    <table summary="This is a chart of year-end returns for 2005.">
+        <thead>
+            <tr>
+                <th scope="col">Table header 1</th>
+                <th scope="col">Table header 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Table data 1</td>
+                <td>Table data 2</td>
+            </tr>
+        </tbody>
+    </table>
+```
 
 ## 特殊符号使用
 
@@ -274,3 +311,17 @@ id 和 class 的选择，如果`只使用一次`，使用`id`,如果使用多次
 
 特殊符号详见
 
+
+## JS生成标签
+
+在JS文件中生成标签让内容变得更难查找，更难编辑，性能更差。应该尽量避免这种情况的出现。
+
+## 实用高于完美
+
+尽量遵循HTML标准和语义，但是不应该以浪费实用性作为代价；
+
+任何时候都要用尽量小的复杂度和尽量少的标签来解决问题。
+
+## HTML验证
+
+可以最好使用[W3C HTML validator ](https://validator.w3.org/)对页面进行测试，并且有时候很多细节问题不太容易被发现。

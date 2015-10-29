@@ -1,8 +1,122 @@
 # JS书写规范
 
+## 编码总体规则
+
+* 99%的代码必须封装在外部Javascript文件中,文件必须在 BODY 标签的尾部引入，让页面的性能最大化;
+
+* 不要依赖于 user-agent 字符串。进行适当的特性检测;
+
+* 编写可维护的代码
+
+* 单变量模式
+
+* Hoisting：把所有变量声明统一放到函数的起始位置 （在后部声明的变量也会被JS视为在头部定义，由此会产生问题）
+
+* 不要扩充内置原型（虽然给Object(), Function()之类的内置原型增加属性和方法很巧妙，但是会破坏可维护性）
+
+* 不要用隐含的类型转换
+
+* 不要用 eval()
+
+* 用 parseInt() 进行数字转换
+
+* （规范）左大括号的位置
+
+* 构造器首字母大写
+
+* 不要用 void
+
+* 不要用 with 语句
+
+* 不要用 continue 语句
+
+* 尽量不要用位运算
+
+* 常量或配置变量（例如动画持续时间等）必须放在文件的顶部;
+
+
+##变量命名
+
+* 标准变量采用驼峰式命名;
+
+* jquery对象必须以'$'开头命名;
+
+* 所有布尔变量的命名必须用 "is" 开头;
+
+* 'ID'在变量名中全大写;
+
+* 'URL'在变量名中全大写;
+
+* 'Android'在变量名中大写第一个字母;
+
+* 'iOS'在变量名中小写第一个，大写后两个字母;
+
+* 常量全大写，用下划线连接;
+
+* 构造函数，大写第一个字母;
+
+* 给变量和函数的命名要有逻辑意义：例如： `popUpWindowForAd` 就比 `myWindow` 好很多;
+
+
+
+
+```javascript
+    var thisIsMyName;
+    
+    var goodID;
+    
+    var reportURL;
+    
+    var AndroidVersion;
+    
+    var iOSVersion;
+    
+    var MAX_COUNT = 10;
+    
+    function Person(name) {
+        this.name = name;
+    }
+    
+    // not good
+    var body = $('body');
+    
+    // good
+    var $body = $('body');
+```
+
+
+# 性能相关
+
+* 不要使用 document.write(),会进行整个页面重新渲染;
+
+
+
+
+
+
+
+## 变量声明
+
+* 一个函数作用域中所有的变量声明尽量提到函数首部，用一个var声明，不允许出现两个连续的var声明。
+
+* 最小化全局变量 - 你创建的全局变量越少越好。一般来说，用于你的应用命名空间，1会是个好的数字。
+
+
+```javascript
+    function doSomethingWithItems(items) {
+        // use one var
+        var value = 10,
+            result = value + 10,
+            i,
+            len;
+    
+        for (i = 0, len = items.length; i < len; i++) {
+            result += 10;
+        }
+    }
+```
 
 ## 缩进
-<a id="indent"></a>
 
 * 使用soft tab（4个空格）。
 
@@ -297,58 +411,6 @@
     }
 ```
 
-##变量命名
-
-标准变量采用驼峰式命名（除了对象的属性外，主要是考虑到cgi返回的数据）
-* 'ID'在变量名中全大写
-* 'URL'在变量名中全大写
-* 'Android'在变量名中大写第一个字母
-* 'iOS'在变量名中小写第一个，大写后两个字母
-* 常量全大写，用下划线连接
-* 构造函数，大写第一个字母
-* jquery对象必须以'$'开头命名
-
-```javascript
-    var thisIsMyName;
-    
-    var goodID;
-    
-    var reportURL;
-    
-    var AndroidVersion;
-    
-    var iOSVersion;
-    
-    var MAX_COUNT = 10;
-    
-    function Person(name) {
-        this.name = name;
-    }
-    
-    // not good
-    var body = $('body');
-    
-    // good
-    var $body = $('body');
-```
-
-## 变量声明
-
-一个函数作用域中所有的变量声明尽量提到函数首部，用一个var声明，不允许出现两个连续的var声明。
-
-```javascript
-    function doSomethingWithItems(items) {
-        // use one var
-        var value = 10,
-            result = value + 10,
-            i,
-            len;
-    
-        for (i = 0, len = items.length; i < len; i++) {
-            result += 10;
-        }
-    }
-```
 
 ## 函数
 
@@ -865,3 +927,8 @@ $myList.attr({
 ```javascript
 $("#mydiv").css({'color':red, 'font-weight':'bold'}); // BAD
 ```
+
+
+## 函数
+
+尽力编写可通用化的函数，让它接受参数并返回值。这样有利于充分的代码重用，而且一旦与引入及外部脚本配合起来，能在脚本需要修改时减少开销。例如，相比硬编码一个带有窗口大小、选项和url的弹出式窗口，不如编写一个接受大小、url和选项作为变量的函数。

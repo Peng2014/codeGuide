@@ -4,14 +4,35 @@
 
 # CSS 书写规范
 
-* [缩进](#indent)
+## CSS编码总体原则
+
+* 从外部文件加载CSS，尽可能减少文件数。加载标签必须放在文件的 HEAD 部分。
+
+* 用 LINK 标签加载，永远不要用@import。
+
+* 使用[normalize.css](http://necolas.github.com/normalize.css/)让渲染效果在不同浏览器中更一致。
+
+* 使用类似[YUI fonts.css](http://developer.yahoo.com/yui/fonts/) 的字体规格化文件。
+
+* 定义样式的时候，对样式在页面只出现一次的元素用id，其他的用class,(尽可能用class)
+
+* 不允许有`空的规则`；
+
+* 去掉数字中不必要的`小数点`和末尾的0, 属性值'0'后面不要加`单位`；
+
+* 不要在同个规则里出现重复的属性，如果重复的属性是连续的则没关系；
+
+* 不要在一个文件里出现两个相同的规则；
+
+* 用 `border: 0;` 代替 border: none;；
+
+
 
 
 
 
 
 ## 缩进
-<a id="indent"></a>
 
 * 使用soft tab（4个空格）。
 
@@ -22,17 +43,18 @@
 * `无前缀`的标准属性应该写在有前缀的属性`后面`；
 
 ```css
+    /* good */
     .element {
     position: absolute;
     top: 10px;
     left: 10px;
     }
-    
         .sub-element {
         border-radius: 10px;
         width: 50px;
         height: 50px;
         }
+    
     
      /* not good */
     .element {
@@ -243,29 +265,33 @@ margin 和 padding 相反，需要使用简写；
     }
 ```
 
-## 其它
+## 高效选择器 
+> [参考文章-编写高效CSS](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Writing_efficient_CSS)
 
-* 不允许有`空的规则`；
+四种关键选择器
 
-* 元素选择器用`小写字母`；
+1. ID 规则
+2. Class 规则
+3. 标签规则
+4. 通用规则
 
-* 去掉`小数点`前面的0；
+匹配规则：(从右到左边)
 
-* 去掉数字中不必要的`小数点`和末尾的0；
+样式系统从关键选择器开始匹配规则，然后左移(查找规则选择器的任何祖先元素)。
 
-* 属性值'0'后面不要加`单位`；
+只要选择器的子树(substree)一直在检查，样式系统就会持续左移，直到和规则匹配，或者是因为不匹配而放弃。
 
-* 不要在同个规则里出现重复的属性，如果重复的属性是连续的则没关系；
+高性能匹配关键：对于一个给定的元素，需要匹配的规则越少，样式的解析就会越快。
 
-* 不要在一个文件里出现两个相同的规则；
+高效CSS指南:
 
-* 用 `border: 0;` 代替 border: none;；
+* 避免通配`'*'选择器`;
 
-* 选择器不要超过`4层`（在scss中如果超过4层应该考虑用嵌套的方式来写）；
+* 不要叠加限定条件到 ID 选择器（`div#myid`)或 class 选择器(`table.results`)
 
-* 发布的代码中不要有 `@import`；
+* 尽量避免后代选择器(后代选择器是 CSS 中耗费最昂贵的);  
 
-* 尽量少用`'*'选择器`。
+* 依赖继承;
 
 
 
@@ -658,3 +684,6 @@ margin 和 padding 相反，需要使用简写；
 个位级（业务级：1-9，Z）
 
 
+## 伪类
+
+[学习深度使用伪类](http://www.smashingmagazine.com/2011/03/how-to-use-css3-pseudo-classes/)
